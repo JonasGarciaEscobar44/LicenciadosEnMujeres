@@ -4,9 +4,12 @@ public class Personaje {
     private int mana, manaMaximo;
     private Ataque[] ataques;
     
-    // --- NUEVO: MOCHILA ---
     private int bifrutas;
     private int cafeles;
+
+    // --- NUEVO: ESTADOS ALTERADOS ---
+    private int turnosVeneno;
+    private boolean aturdido;
 
     public Personaje(String nombre, int vidaMaxima, int manaMaximo, Ataque[] ataques, int bifrutas, int cafeles) {
         this.nombre = nombre;
@@ -17,6 +20,8 @@ public class Personaje {
         this.ataques = ataques;
         this.bifrutas = bifrutas;
         this.cafeles = cafeles;
+        this.turnosVeneno = 0;
+        this.aturdido = false;
     }
 
     public boolean estaVivo() { return vida > 0; }
@@ -44,7 +49,6 @@ public class Personaje {
         return false; 
     }
 
-    // --- NUEVO: FUNCIONES DE MOCHILA ---
     public boolean usarBifruta() {
         if (bifrutas > 0) {
             bifrutas--;
@@ -60,6 +64,18 @@ public class Personaje {
         }
         return false;
     }
+
+    // --- NUEVO: FUNCIONES DE ESTADOS ---
+    public void aplicarVeneno(int turnos) { this.turnosVeneno += turnos; }
+    public boolean tieneVeneno() { return turnosVeneno > 0; }
+    public void sufrirVeneno() {
+        if (turnosVeneno > 0) {
+            recibirDano(7);
+            turnosVeneno--;
+        }
+    }
+    public void setAturdido(boolean estado) { this.aturdido = estado; }
+    public boolean isAturdido() { return aturdido; }
 
     public String getNombre() { return nombre; }
     public int getVida() { return vida; }
