@@ -138,17 +138,17 @@ public class Main {
                         System.out.println("Tiras de bifru y te curas 30 puntos de vida.");
                         miHeroe.curarVida(30);
                     } else {
-                        System.out.println("¡Rebuscas en la mochila y no te quedan bifrutas! Pierdes el turno por tolai.");
+                        System.out.println("No te quedan bifrutas. Payasada gorda.");
                     }
                 } else if (accion.equals("3")) {
                     if (miHeroe.usarCafe()) {
                         System.out.println("Abres un cafele malo d aldi y recuperas 40 de maná.");
                         miHeroe.curarMana(40);
                     } else {
-                        System.out.println("¡Estás a cero de cafeles! Pierdes el turno por tolai.");
+                        System.out.println("Ni un cafele pa ti. Payasada gorda.");
                     }
                 } else {
-                    System.out.println("Te has liado con los botones y pierdes el turno por tolai.");
+                    System.out.println("Te has liado con los botones y pierdes el turno por borrico.");
                 }
             }
             
