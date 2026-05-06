@@ -79,32 +79,32 @@ public class Main {
             System.out.println(""); 
             
             // --- TU TURNO ---
-            if (accion.equals("1")) {
-                System.out.println("Elige cómo le vas a dar:");
-                Ataque[] misAtaques = miHeroe.getAtaques();
-                for (int i = 0; i < misAtaques.length; i++) {
-                    System.out.println((i+1) + ". " + misAtaques[i].getNombre() + " (Daño: " + misAtaques[i].getDano() + " | Gasta MP: " + misAtaques[i].getCosteMana() + ")");
-                }
-                int numAtaque = Integer.parseInt(sc.nextLine()) - 1;
-                Ataque ataqueElegido = misAtaques[numAtaque];
+        if (accion.equals("1")) {
+            System.out.println("Elige cómo le vas a dar:");
+            Ataque[] misAtaques = miHeroe.getAtaques();
+        for (int i = 0; i < misAtaques.length; i++) {
+        System.out.println((i+1) + ". " + misAtaques[i].getNombre() + " (Daño: " + misAtaques[i].getDano() + " | Gasta MP: " + misAtaques[i].getCosteMana() + ")");
+        }
+        int numAtaque = Integer.parseInt(sc.nextLine()) - 1;
+        Ataque ataqueElegido = misAtaques[numAtaque];
 
-                // Comprobamos si tiene maná para el ataque
-                if (miHeroe.gastarMana(ataqueElegido.getCosteMana())) {
-                    System.out.println("Le tiras un " + ataqueElegido.getNombre() + " y le quitas " + ataqueElegido.getDano() + " de vida al " + miEnemigo.getNombre() + ".");
-                    miEnemigo.recibirDano(ataqueElegido.getDano());
-                } else {
-                    System.out.println("¡Estás tieso de maná! Pierdes el turno por tolai.");
-                }
+        // Comprobamos si tiene maná para el ataque
+        if (miHeroe.gastarMana(ataqueElegido.getCosteMana())) {
+            int danoFinal = ataqueElegido.getDano();
+        
+        // --- SISTEMA DE CRÍTICOS ---
+        int probabilidadCritico = (int)(Math.random() * 10) + 1; // Número del 1 al 10
+        if (probabilidadCritico == 1) { // 10% de probabilidad
+            danoFinal = (int)(danoFinal * 1.5); // 50% más de daño
+            System.out.println("¡CRÍTICO! folladon loco.");
+        }
+        
 
-            } else if (accion.equals("2")) {
-                System.out.println("Tiras de bifru y te curas 30 puntos de vida.");
-                miHeroe.curarVida(30);
-            } else if (accion.equals("3")) {
-                System.out.println("Abres un cafele malo d aldi y recuperas 40 de maná.");
-                miHeroe.curarMana(40);
-            } else {
-                System.out.println("Te has liado con los botones y pierdes el turno por tolai.");
-            }
+        System.out.println("Le tiras un " + ataqueElegido.getNombre() + " y le quitas " + danoFinal + " de vida al " + miEnemigo.getNombre() + ".");
+        miEnemigo.recibirDano(danoFinal);
+        } else {
+        System.out.println("¡Estás tieso de maná! Pierdes el turno por tolai.");
+        }
             
             // --- TURNO DEL MONSTRUO ---
             if (miEnemigo.estaVivo()) {
