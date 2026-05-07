@@ -14,7 +14,7 @@ public class Main {
         if (opcion.equals("1")) {
             empezarPelea(sc);
         } else {
-            System.out.println("Malillo cagon, te has perdido la diversion. Chao pescao.");
+            System.out.println("Malillo cagon, hueles peste.");
         }
         
         sc.close();
@@ -83,7 +83,7 @@ public class Main {
         // --- PLANTILLA DE HÉROES ---
         Personaje[] heroes = {
             new Personaje("Fonso", 150, 50, new Ataque[]{
-                new Ataque("Guaya fina", 15, 0, "Ninguno"), 
+                new Ataque("Cadereo sensual", 15, 0, "Ninguno"), 
                 new Ataque("Abrir vscode cuando no toca", 30, 15, "Aturdir") 
             }, 2, 1),
             new Personaje("Chum chum", 120, 120, new Ataque[]{
@@ -170,7 +170,7 @@ public class Main {
                                 int probabilidadCritico = (int)(Math.random() * 10) + 1; 
                                 if (probabilidadCritico == 1) { 
                                     danoFinal = (int)(danoFinal * 1.5); 
-                                    System.out.println("¡BUM! ¡CRÍTICO! Le has metido un viaje guapo.");
+                                    System.out.println("Palo gordo (critico), al nivel de no me conoce.");
                                 }
 
                                 System.out.println("Le tiras un " + ataqueElegido.getNombre() + " y le quitas " + danoFinal + " de vida al " + miEnemigo.getNombre() + ".");
