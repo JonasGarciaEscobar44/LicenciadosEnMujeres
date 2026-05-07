@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
-        System.out.println("=== PELEA CALLEJERA V3.1: LA MAZMORRA CON LOS CLÁSICOS ===");
-        System.out.println("1. Entrar a la mazmorra (10 pisos)");
+        System.out.println("=== LUNES EN DAW: LA MAZMORRA ===");
+        System.out.println("1. Entrar a MEDAC OPEN (10 pisos)");
         System.out.println("2. Cagarse y volver a casa");
         System.out.print("Elige: ");
         
