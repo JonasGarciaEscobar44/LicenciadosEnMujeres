@@ -20,21 +20,62 @@ public class Main {
         sc.close();
     }
 
-    // --- NUEVO: ENEMIGOS FIJOS PERO ALEATORIOS Y ESCALABLES ---
+    // --- NUEVO: 10 ENEMIGOS FIJOS PERO ALEATORIOS Y ESCALABLES ---
     public static Personaje obtenerEnemigoFijo(int piso) {
-        int random = (int)(Math.random() * 2); // Un 0 o un 1
+        int random = (int)(Math.random() * 10); // Del 0 al 9
         
-        // Les sumamos stats según el piso para que se note la dificultad
-        if (random == 0) {
-            return new Personaje("khiqe (Piso " + piso + ")", 100 + (piso * 15), 0, new Ataque[]{
-                new Ataque("cigarro y cola", 12 + (piso * 2), 0, "Veneno"),
-                new Ataque("java krry", 20 + (piso * 3), 0, "Ninguno")
-            }, 0, 0);
-        } else {
-            return new Personaje("Pakito Ju (Piso " + piso + ")", 60 + (piso * 15), 50 + (piso * 10), new Ataque[]{
-                new Ataque("Manipular altavoz", 8 + (piso * 2), 0, "Ninguno"),
-                new Ataque("Encendida de proyector", 25 + (piso * 3), 20, "Aturdir")
-            }, 0, 0);
+        switch(random) {
+            case 0:
+                return new Personaje("khiqe (Piso " + piso + ")", 100 + (piso * 15), 0, new Ataque[]{
+                    new Ataque("cigarro y cola", 12 + (piso * 2), 0, "Veneno"),
+                    new Ataque("java krry", 20 + (piso * 3), 0, "Ninguno")
+                }, 0, 0);
+            case 1:
+                return new Personaje("Pakito Ju (Piso " + piso + ")", 60 + (piso * 15), 50 + (piso * 10), new Ataque[]{
+                    new Ataque("Manipular altavoz", 8 + (piso * 2), 0, "Ninguno"),
+                    new Ataque("Encendida de proyector", 25 + (piso * 3), 20, "Aturdir")
+                }, 0, 0);
+            case 2:
+                return new Personaje("El notas de Sistemas (Piso " + piso + ")", 80 + (piso * 15), 40 + (piso * 10), new Ataque[]{
+                    new Ataque("Cable de red al cuello", 15 + (piso * 2), 10, "Aturdir"),
+                    new Ataque("Reiniciar router", 20 + (piso * 3), 0, "Ninguno")
+                }, 0, 0);
+            case 3:
+                return new Personaje("La de RRHH (Piso " + piso + ")", 90 + (piso * 15), 60 + (piso * 10), new Ataque[]{
+                    new Ataque("Dinámica de grupo absurda", 10 + (piso * 2), 15, "Veneno"),
+                    new Ataque("Sonrisa falsa", 18 + (piso * 3), 0, "Ninguno")
+                }, 0, 0);
+            case 4:
+                return new Personaje("El pesao de Crypto (Piso " + piso + ")", 70 + (piso * 15), 80 + (piso * 10), new Ataque[]{
+                    new Ataque("Explicar qué es un NFT", 12 + (piso * 2), 20, "Aturdir"),
+                    new Ataque("Invertir en shitcoins", 22 + (piso * 3), 0, "Veneno")
+                }, 0, 0);
+            case 5:
+                return new Personaje("El repetidor de 4to (Piso " + piso + ")", 110 + (piso * 15), 20 + (piso * 10), new Ataque[]{
+                    new Ataque("Pedir apuntes un día antes", 14 + (piso * 2), 0, "Ninguno"),
+                    new Ataque("Contagiar pereza", 18 + (piso * 3), 15, "Aturdir")
+                }, 0, 0);
+            case 6:
+                return new Personaje("El profe de BBDD (Piso " + piso + ")", 85 + (piso * 15), 70 + (piso * 10), new Ataque[]{
+                    new Ataque("Select * From Hostia", 25 + (piso * 3), 25, "Ninguno"),
+                    new Ataque("Suspender por una coma", 15 + (piso * 2), 10, "Veneno")
+                }, 0, 0);
+            case 7:
+                return new Personaje("El chaval del GYM (Piso " + piso + ")", 130 + (piso * 15), 10 + (piso * 10), new Ataque[]{
+                    new Ataque("Batido de protes caducao", 16 + (piso * 2), 0, "Veneno"),
+                    new Ataque("Curl de biceps en tu cara", 24 + (piso * 3), 0, "Ninguno")
+                }, 0, 0);
+            case 8:
+                return new Personaje("El gamer tóxico (Piso " + piso + ")", 75 + (piso * 15), 90 + (piso * 10), new Ataque[]{
+                    new Ataque("Insultos por micro", 12 + (piso * 2), 0, "Veneno"),
+                    new Ataque("Rage quit", 28 + (piso * 3), 30, "Aturdir")
+                }, 0, 0);
+            case 9:
+            default:
+                return new Personaje("El fantasma de LinkedIn (Piso " + piso + ")", 95 + (piso * 15), 50 + (piso * 10), new Ataque[]{
+                    new Ataque("Post motivacional de humo", 10 + (piso * 2), 20, "Aturdir"),
+                    new Ataque("Networking agresivo", 20 + (piso * 3), 0, "Ninguno")
+                }, 0, 0);
         }
     }
     
@@ -195,7 +236,7 @@ public class Main {
                                     System.out.println("Por fumador pasivo. Estás envenenado por 2 turnos.");
                                     miHeroe.aplicarVeneno(2);
                                 } else if (ataqueDelMalo.getEfecto().equals("Aturdir")) {
-                                    System.out.println("¡Te ha pegado una buena hostia! Pierdes tu próximo turno.");
+                                    System.out.println("Palo gordo, te cuajas y pierdes tu próximo turno.");
                                     miHeroe.setAturdido(true);
                                 }
                             }
@@ -225,7 +266,7 @@ public class Main {
                     for (int i = 0; i < misAtaques.length; i++) {
                         misAtaques[i].mejorarDano(); // Sube el daño un 15%
                     }
-                    System.out.println("Aprendes a pelear mejor tete.");
+                    System.out.println("Aprendes a pelear mejor tete, eres bueno.");
                 }
             }
         }
