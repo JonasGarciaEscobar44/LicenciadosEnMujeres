@@ -45,9 +45,9 @@ public class Main {
                 new Ataque("Guaya fina", 15, 0, "Ninguno"), 
                 new Ataque("Abrir vscode cuando no toca", 30, 15, "Aturdir") 
             }, 2, 1),
-            new Personaje("Chum chum", 100, 120, new Ataque[]{
+            new Personaje("Chum chum", 120, 120, new Ataque[]{
                 new Ataque("IA en local", 12, 0, "Ninguno"),
-                new Ataque("Stalkear pibas en insta", 35, 30, "Veneno") 
+                new Ataque("Stalkear pibas en insta", 35, 30, "Aturdir") 
             }, 1, 3)
         };
 
@@ -67,10 +67,10 @@ public class Main {
                 System.out.println("\n==============================================");
                 System.out.println("⚠️ ¡CUIDAO! HAS LLEGADO AL PISO 10: EL JEFE FINAL ⚠️");
                 System.out.println("==============================================");
-                miEnemigo = new Personaje("EL DIRECTOR DEL CENTRO", 350, 200, new Ataque[]{
-                    new Ataque("Expulsión directa", 35, 0, "Ninguno"),
-                    new Ataque("Parte disciplinario", 55, 30, "Aturdir"),
-                    new Ataque("Charla aburrida", 20, 10, "Veneno")
+                miEnemigo = new Personaje("EL DIRECTOR BUJARRILLA", 400, 200, new Ataque[]{
+                    new Ataque("Se pira pq le sale del nabo", 25, 0, "Ninguno"),
+                    new Ataque("Excursion de javi (es roña)", 40, 30, "Veneno"),
+                    new Ataque("Arrastrada por las 5 estrellas en trustpilot", 35, 10, "Aturdir")
                 }, 0, 0);
             } else {
                 System.out.println("\n--- ENTRANDO AL PISO " + piso + " ---");
@@ -87,7 +87,7 @@ public class Main {
                 System.out.println("----------------");
 
                 if (miHeroe.tieneVeneno()) {
-                    System.out.println("¡Cof cof! Estás intoxicado y pierdes 5 de vida.");
+                    System.out.println("Tienes tuberculosis y pierdes 5 de vida.");
                     miHeroe.sufrirVeneno();
                 }
                 if (miEnemigo.tieneVeneno() && miEnemigo.estaVivo()) {
