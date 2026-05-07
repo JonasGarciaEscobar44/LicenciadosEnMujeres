@@ -83,12 +83,12 @@ public class Main {
         // --- PLANTILLA DE HÉROES ---
         Personaje[] heroes = {
             new Personaje("Fonso", 150, 50, new Ataque[]{
-                new Ataque("Cadereo sensual", 15, 0, "Ninguno"), 
-                new Ataque("Abrir vscode cuando no toca", 30, 15, "Aturdir") 
+                new Ataque("Cadereo sensual", 30, 0, "Ninguno"), 
+                new Ataque("Abrir vscode cuando no toca", 65, 15, "Aturdir") 
             }, 2, 1),
             new Personaje("Chum chum", 120, 120, new Ataque[]{
-                new Ataque("IA en local", 12, 0, "Ninguno"),
-                new Ataque("Stalkear pibas en insta", 35, 30, "Aturdir") 
+                new Ataque("IA en local", 20, 0, "Ninguno"),
+                new Ataque("Stalkear pibas en insta", 70, 30, "Aturdir") 
             }, 1, 3)
         };
 
