@@ -87,8 +87,8 @@ public class Main {
                 new Ataque("Abrir vscode cuando no toca", 65, 15, "Aturdir") 
             }, 2, 1),
             new Personaje("Chum chum", 120, 120, new Ataque[]{
-                new Ataque("IA en local", 20, 0, "Ninguno"),
-                new Ataque("Stalkear pibas en insta", 70, 30, "Aturdir") 
+                new Ataque("IA en local", 25, 0, "Ninguno"),
+                new Ataque("Stalkear pibas en insta", 75, 30, "Aturdir") 
             }, 1, 3)
         };
 
@@ -106,7 +106,7 @@ public class Main {
             if (piso == 10) {
                 // JEFE FINAL
                 System.out.println("\n==============================================");
-                System.out.println("⚠️ ¡CUIDAO! HAS LLEGADO AL PISO 10: EL JEFE FINAL ⚠️");
+                System.out.println(" ¡CUIDAO! HAS LLEGADO AL PISO 10: EL JEFE FINAL. ");
                 System.out.println("==============================================");
                 miEnemigo = new Personaje("EL DIRECTOR BUJARRILLA", 400, 200, new Ataque[]{
                     new Ataque("Se pira pq le sale del nabo", 25, 0, "Ninguno"),
@@ -249,13 +249,13 @@ public class Main {
 
             // --- RESULTADO DEL PISO ---
             if (!miHeroe.estaVivo()) {
-                System.out.println("\n💀 Has tragao fuerte " + piso + ". Te toca volver a empezar de cero, pajero.");
+                System.out.println("\n Has tragao fuerte, te has quedado en el piso " + piso + ". Te toca volver a empezar de cero, pajero.");
                 break; // Rompe el bucle de la mazmorra porque has muerto
             } else {
                 if (piso == 10) {
-                    System.out.println("\n🏆 Pa un lunes no esta mal, bien jugao, mañana toca progra a primera asi que espabila. 🏆");
+                    System.out.println("\n Pa un lunes no esta mal, bien jugao, mañana toca progra a primera asi que espabila. ");
                 } else {
-                    System.out.println("\n✨ ¡Te has cargado al enemigo del piso " + piso + "! ✨");
+                    System.out.println("\n ¡Te has cargado al enemigo del piso " + piso + "! ");
                     System.out.println("Loteas el cuerpo y encuentras 1 Bifruta y 1 Cafele.");
                     
                     // Mejoramos al héroe
