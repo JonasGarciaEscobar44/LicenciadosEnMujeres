@@ -7,7 +7,6 @@ public class Personaje {
     private int bifrutas;
     private int cafeles;
 
-    // --- NUEVO: ESTADOS ALTERADOS ---
     private int turnosVeneno;
     private boolean aturdido;
 
@@ -65,12 +64,22 @@ public class Personaje {
         return false;
     }
 
-    // --- NUEVO: FUNCIONES DE ESTADOS ---
+    // --- NUEVO: LOOTEO AL GANAR Y RESETEO DE ESTADOS ---
+    public void anadirBotin() {
+        bifrutas++;
+        cafeles++;
+    }
+
+    public void resetearEstados() {
+        turnosVeneno = 0;
+        aturdido = false;
+    }
+
     public void aplicarVeneno(int turnos) { this.turnosVeneno += turnos; }
     public boolean tieneVeneno() { return turnosVeneno > 0; }
     public void sufrirVeneno() {
         if (turnosVeneno > 0) {
-            recibirDano(7);
+            recibirDano(5);
             turnosVeneno--;
         }
     }
