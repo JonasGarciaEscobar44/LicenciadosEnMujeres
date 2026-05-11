@@ -1,4 +1,12 @@
+/**
+ * Clase que representa un ataque dentro del juego.
+ * Contiene el daño, coste de maná y efectos secundarios.
+ */
 public class Ataque {
+    /**
+     * Incrementa el daño base del ataque en un 15%.
+     * Se utiliza como recompensa al subir de piso.
+     */
     private String nombre;
     private int dano;
     private int costeMana;

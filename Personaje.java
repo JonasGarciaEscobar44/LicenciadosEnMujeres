@@ -1,4 +1,12 @@
+/**
+ * Clase principal para los combatientes (Héroes y Enemigos).
+ * Gestiona estadísticas como vida, maná y estados alterados.
+ */
 public class Personaje {
+    /**
+     * Aplica daño al personaje y comprueba que la vida no baje de cero.
+     * @param cantidad Puntos de vida a restar.
+     */
     private String nombre;
     private int vida, vidaMaxima;
     private int mana, manaMaximo;
@@ -69,7 +77,10 @@ public class Personaje {
         bifrutas++;
         cafeles++;
     }
-
+    /**
+     * Limpia los efectos negativos (veneno y aturdimiento).
+     * Se llama al finalizar cada combate.
+     */
     public void resetearEstados() {
         turnosVeneno = 0;
         aturdido = false;
