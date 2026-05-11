@@ -46,7 +46,7 @@ public class Evento {
                 }
                 break;
             case 2:
-                System.out.println("Encuentras un sitio tranquilo cerca de los banos.");
+                System.out.println("Encuentras un sitio tranquilo cerca de los baños.");
                 System.out.println("Te echas un cigarrito y descansas. Recuperas 20 HP y 20 MP.");
                 heroe.curarVida(20);
                 heroe.curarMana(20);
