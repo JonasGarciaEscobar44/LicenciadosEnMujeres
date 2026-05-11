@@ -1,3 +1,7 @@
+/**
+ * Clase que representa un ataque dentro del juego.
+ * Contiene el daño, coste de maná y efectos secundarios.
+ */
 public class Ataque {
     private String nombre;
     private int dano;
