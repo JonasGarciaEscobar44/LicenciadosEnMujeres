@@ -58,7 +58,7 @@ public class Main {
                 System.out.println(" ¡CUIDAO! HAS LLEGADO AL PISO 10: JAVI. ");
                 System.out.println("==============================================");
                 // Cambio realizado por Pedro: Añadido Javi como Final Boss
-                miEnemigo = new Personaje("JAVI", 500, 300, new Ataque[]{new Ataque("Castigo sin recreo", 30, 0, "Ninguno")}, 0, 0);
+                miEnemigo = new Personaje("JAVI", 500, 300, new Ataque[]{new Ataque("Crud revenio", 30, 0, "Falta sin justificar")}, 40, 10);
             } else {
                 System.out.println("\n--- ENTRANDO AL PISO " + piso + " ---");
                 miEnemigo = obtenerEnemigoFijo(piso);
@@ -107,7 +107,7 @@ public class Main {
                         System.out.println("Javi: 'Chavales, guardad todo. Sacad un folio y poned el nombre.'");
                         System.out.println("Javi: 'EXAMEN SORPRESA DE PROGRAMACION.'");
                         System.out.println("\n" + miHeroe.getNombre() + " (con la mirada perdida): '¿Pero que dice? Pff... estamos cooked.'");
-                        System.out.println("\n¡INSTA-KILL! Tu nota es un 0. Has muerto por error de sintaxis.");
+                        System.out.println("\n¡INSTA-KILL! Tu nota es un 0. Has muerto.");
                         miHeroe.recibirDano(9999);
                     } else if (miEnemigo.isAturdido()) {
                         System.out.println("El enemigo esta viendo las estrellas.");
