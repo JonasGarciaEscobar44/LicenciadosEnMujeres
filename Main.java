@@ -1,31 +1,40 @@
 import java.util.Scanner;
 
-
 public class Main {
+    // Aquí arranca la movida, la función principal del programa
     public static void main(String[] args) {
+        // Preparamos el Scanner para leer lo que escribas por teclado
         Scanner sc = new Scanner(System.in);
         
+        // Llamamos a la función que pinta el dibujo guapo de la mazmorra
         imprimirLogo();
         
+        // Imprimimos el menú inicial
         System.out.println("1. Entrar a MEDAC OPEN (10 pisos)");
         System.out.println("2. Cagarse y volver a casa");
         System.out.print("\nElige tu destino, fiera: ");
         
+        // Guardamos lo que eliges
         String opcion = sc.nextLine();
         
-        // Antonio Barbado
+        // Evaluamos la opción elegida
         if (opcion.equals("antonio_god")) {
+            // Huevo de pascua (Easter egg): Si escribes esto, entras chetado (Modo Dios)
             System.out.println("\n[MODO DIOS ACTIVADO] Antonio Barbado te ha bendecido con el aprobado manual.");
             empezarPelea(sc, true);
         } else if (opcion.equals("1")) {
+            // Empieza la partida normal
             empezarPelea(sc, false);
         } else {
+            // Si eliges la 2 o pones cualquier otra cosa, te echa del programa
             System.out.println("\nMalillo cagon, hueles peste. Vuelve cuando te hayas duchado.");
         }
         
+        // Cerramos el Scanner porque ya no lo vamos a usar más aquí (buena práctica)
         sc.close();
     }
 
+    // Función que simplemente imprime texto por pantalla para hacer el logo
     public static void imprimirLogo() {
         System.out.println("   _________________________________________________");
         System.out.println("  |                                                 |");
@@ -40,8 +49,13 @@ public class Main {
         System.out.println();
     }
 
+    // Esta función te saca un enemigo al azar dependiendo del piso
     public static Personaje obtenerEnemigoFijo(int piso) {
+        // Genera un número aleatorio entre 0 y 9
         int random = (int)(Math.random() * 10); 
+        
+        // Dependiendo del número, te devuelve un enemigo u otro. 
+        // Fíjate que la vida y el daño escalan (suman más) dependiendo del piso en el que estés.
         switch(random) {
             case 0: return new Personaje("khiqe (Piso " + piso + ")", 100 + (piso * 15), 0, new Ataque[]{new Ataque("cigarro y cola", 12 + (piso * 2), 0, "Veneno"), new Ataque("java krry", 20 + (piso * 3), 0, "Ninguno")}, 0, 0);
             case 1: return new Personaje("Pakito Ju (Piso " + piso + ")", 60 + (piso * 15), 50 + (piso * 10), new Ataque[]{new Ataque("Manipular altavoz", 8 + (piso * 2), 0, "Ninguno"), new Ataque("Encendida de proyector", 25 + (piso * 3), 20, "Aturdir")}, 0, 0);
@@ -56,7 +70,9 @@ public class Main {
         }
     }
     
+    // Aquí está el motor del juego, donde te pegas de tortas
     public static void empezarPelea(Scanner sc, boolean modoDios) {
+        // Creamos la lista de personajes jugables con sus stats y ataques
         Personaje[] heroes = {
             new Personaje("Fonso", 150, 50, new Ataque[]{new Ataque("Cadereo sensual", 30, 0, "Ninguno"), new Ataque("Abrir vscode cuando no toca", 65, 15, "Aturdir")}, 2, 1),
             new Personaje("Chum chum", 120, 120, new Ataque[]{new Ataque("IA en local", 25, 0, "Ninguno"), new Ataque("Stalkear pibas en insta", 75, 30, "Aturdir")}, 1, 3),
@@ -64,22 +80,29 @@ public class Main {
             new Personaje("Julio", 80, 10, new Ataque[]{new Ataque("Calvicie", 90, 0, "Ninguno"), new Ataque("Estar casi mas calvo que Johnny Sins", 45, 5, "Aturdir")}, 2, 1)
         };
 
+        // Si metiste el código, sobreescribimos la lista entera y solo puedes ser Antonio Barbado (rotísimo)
         if (modoDios) {
             heroes = new Personaje[]{new Personaje("Antonio Barbado", 999, 999, new Ataque[]{new Ataque("Formatear Disco Duro", 500, 0, "Ninguno"), new Ataque("Aprobado General", 1000, 0, "Ninguno")}, 10, 10)};
         }
 
+        // Imprimimos la pantalla de selección de personaje
         System.out.println("\n¿Con quién vas a bajar a la mazmorra?");
         for (int i = 0; i < heroes.length; i++) {
             System.out.println((i+1) + ". " + heroes[i].getNombre() + " (HP: " + heroes[i].getVida() + " | MP: " + heroes[i].getMana() + ")");
         }
+        
+        // Leemos tu elección, restamos 1 porque los arrays empiezan en 0
         int elecHeroe = Integer.parseInt(sc.nextLine()) - 1;
         Personaje miHeroe = heroes[elecHeroe];
 
-        boolean javiFase2 = false; // Antonio Barbado:
+        // Bandera para saber si el boss final ha entrado en su segunda fase
+        boolean javiFase2 = false; 
 
+        // Bucle que te hace recorrer los 10 pisos
         for (int piso = 1; piso <= 10; piso++) {
             Personaje miEnemigo;
 
+            // Si es el último piso, aparece Javi. Si no, saca un enemigo random.
             if (piso == 10) {
                 System.out.println("\n==============================================");
                 System.out.println(" ¡CUIDAO! HAS LLEGADO AL PISO 10: JAVI. ");
@@ -91,92 +114,115 @@ public class Main {
                 System.out.println("¡Te ha saltado un " + miEnemigo.getNombre() + " salvaje!");
             }
             
+            // Bucle de la pelea actual: sigue hasta que uno muera (o cambie de fase Javi)
             while (miHeroe.estaVivo() && (miEnemigo.estaVivo() || (piso == 10 && !javiFase2))) {
                 
-                // Antonio Barbado: 
+                // Lógica de la segunda fase del boss: si llegas al piso 10, lo matas, y aún no ha saltado la fase 2...
                 if (piso == 10 && !miEnemigo.estaVivo() && !javiFase2) {
                     System.out.println("\nJavi: '¿Os creíais que era tan fácil?'");
                     System.out.println("Javi se toma un café del Aldi y entra en MODO DEPURACIÓN.");
+                    // Renace con la vida a tope y ataques nuevos
                     miEnemigo = new Personaje("JAVI (FULL POWER)", 450, 999, new Ataque[]{new Ataque("Merge Conflict", 50, 0, "Aturdir"), new Ataque("Código Espagueti", 40, 0, "Veneno")}, 0, 0);
                     javiFase2 = true;
                     System.out.println("--- JAVI HA RECUPERADO TODA LA VIDA ---");
                 }
 
+                // Pintamos la vida y maná en cada turno
                 System.out.println("\n--- MARCADOR ---");
                 System.out.println("Tú (" + miHeroe.getNombre() + "): " + miHeroe.getVida() + " HP | " + miHeroe.getMana() + " MP");
                 System.out.println("Enemigo (" + miEnemigo.getNombre() + "): " + miEnemigo.getVida() + " HP");
 
+                // Si alguno está envenenado, se come el daño de veneno aquí
                 if (miHeroe.tieneVeneno()) miHeroe.sufrirVeneno();
                 if (miEnemigo.tieneVeneno() && miEnemigo.estaVivo()) miEnemigo.sufrirVeneno();
+                
+                // Si el veneno ha matado a alguno, paramos el combate
                 if (!miHeroe.estaVivo() || !miEnemigo.estaVivo()) break;
                 
+                // TU TURNO: comprobamos si estás aturdido
                 if (miHeroe.isAturdido()) {
                     System.out.println("Estás atontao perdío. Pierdes el turno.");
-                    miHeroe.setAturdido(false); 
+                    miHeroe.setAturdido(false); // Te quita el aturdimiento para el siguiente
                 } else {
+                    // Si no estás aturdido, te da a elegir qué hacer
                     System.out.println("\n1. Atacar | 2. Bifrutar ("+miHeroe.getBifrutas()+") | 3. Cafele ("+miHeroe.getCafeles()+")");
                     String accion = sc.nextLine();
                     
                     if (accion.equals("1")) {
+                        // Elige un ataque al azar de entre los tuyos
                         Ataque at = miHeroe.getAtaques()[(int)(Math.random() * miHeroe.getAtaques().length)];
+                        
+                        // Si tienes maná suficiente para el ataque
                         if (miHeroe.gastarMana(at.getCosteMana())) {
                             int danoFinal = at.getDano();
                             double suerte = Math.random();
 
-                            //Antonio Barbado:
+                            // Pasiva especial si estás usando a Joseca y te queda poca vida
                             if (miHeroe.getNombre().equals("Joseca") && miHeroe.getVida() < 25) {
                                 danoFinal *= 2; 
                                 System.out.println("[PASIVA SEVILLANA] Joseca entra en modo cierre de feria. ¡DAÑO DOBLE!");
                             }
 
-                            if (suerte > 0.88) {
+                            // Sistema de crítico (hace el doble) o fallo (no hace daño)
+                            if (suerte > 0.88) { // 12% de probabilidad de crítico
                                 danoFinal *= 2;
                                 System.out.println("¡¡CRÍTICO!! Menudo viaje le has dao.");
-                            } else if (suerte < 0.08) {
+                            } else if (suerte < 0.08) { // 8% de probabilidad de fallar
                                 danoFinal = 0;
                                 System.out.println("¡FALLO! El código no compila y no haces nada.");
                             }
 
                             System.out.println("Usas " + at.getNombre() + " -> " + danoFinal + " pupa.");
-                            miEnemigo.recibirDano(danoFinal);
+                            miEnemigo.recibirDano(danoFinal); // Le quita la vida al bicho
                         }
                     } else if (accion.equals("2") && miHeroe.usarBifruta()) {
+                        // Si usas un bifrutas, te curas 35 HP
                         miHeroe.curarVida(35);
                     } else if (accion.equals("3") && miHeroe.usarCafe()) {
+                        // Si usas café, recuperas 45 de Maná
                         miHeroe.curarMana(45);
                     }
                 }
                 
+                // TURNO DEL ENEMIGO (si sigue vivo después de tu hostia)
                 if (miEnemigo.estaVivo()) {
-                    // El Insta-kill de Javi
+                    // Mecánica troll del boss Javi: 20% de chances de matarte instantáneamente
                     if (miEnemigo.getNombre().contains("JAVI") && Math.random() < 0.2) {
                         System.out.println("\n¡EXAMEN SORPRESA! " + miHeroe.getNombre() + " no sabe por dónde le da el aire. Has muerto.");
                         miHeroe.recibirDano(9999);
                     } else if (!miEnemigo.isAturdido()) {
+                        // Si el enemigo no está aturdido, elige un ataque al azar y te pega
                         Ataque atM = miEnemigo.getAtaques()[(int)(Math.random() * miEnemigo.getAtaques().length)];
                         System.out.println("El " + miEnemigo.getNombre() + " usa " + atM.getNombre() + "!");
                         miHeroe.recibirDano(atM.getDano());
                     } else {
+                        // Si el enemigo estaba aturdido, pierde el turno y se le quita el estado
                         System.out.println("El enemigo está aturdido.");
                         miEnemigo.setAturdido(false);
                     }
                 }
-            }
+            } // Fin del bucle de la pelea de este piso
 
+            // Qué pasa al terminar el combate
             if (!miHeroe.estaVivo()) {
+                // Si la palmaste, se acaba el bucle de los pisos (Game Over)
                 System.out.println("\nHas caído en el piso " + piso + ". Te vas para septiembre, máquina.");
                 break;
             } else {
+                // Si sigues vivo
                 if (piso == 10) {
+                    // Si era el piso 10, te has pasado el juego
                     System.out.println("\n¡HAS DERROTADO A JAVI! Eres el rey de MEDAC. ");
                 } else {
+                    // Si es un piso normal, subes al siguiente
                     System.out.println("\n¡Piso " + piso + " superado!");
-                    miHeroe.anadirBotin();
-                    miHeroe.resetearEstados();
-                    Evento.aparecer(miHeroe, sc);
-                    for (Ataque a : miHeroe.getAtaques()) a.mejorarDano();
+                    miHeroe.anadirBotin(); // Te dan items
+                    miHeroe.resetearEstados(); // Te limpian venenos/aturdimientos
+                    Evento.aparecer(miHeroe, sc); // Llama a otra clase (Evento) que hará cosillas extra
+                    // Mejoras tus ataques para que peguen más fuerte en el siguiente piso
+                    for (Ataque a : miHeroe.getAtaques()) a.mejorarDano(); 
                 }
             }
-        }
+        } // Fin del bucle de los 10 pisos
     }
 }
