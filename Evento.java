@@ -24,16 +24,16 @@ public class Evento {
                 System.out.print("Elige: ");
                 if (sc.nextLine().equals("1")) {
                     if (Math.random() > 0.5) {
-                        System.out.println("¡Ole! Cae una Bifruta gratis.");
+                        System.out.println("¡Ole! Cae un Bifrutas gratis.");
                         heroe.anadirBotin();
                     } else {
-                        System.out.println("¡ZAS! Calambrazo del 15. Pierdes 15 HP.");
+                        System.out.println("¡ZASCA! Calambrazo del 15. Pierdes 15 HP.");
                         heroe.recibirDano(15);
                     }
                 }
                 break;
             case 1:
-                System.out.println("Ves a un repetidor que parece que sabe lo que hace.");
+                System.out.println("Ves a una repetidora que parece que sabe lo que hace.");
                 System.out.println("Te ofrece compartir sus apuntes (Mana) o sus protes (Vida).");
                 System.out.println("1. Apuntes | 2. Protes");
                 System.out.print("Elige: ");
