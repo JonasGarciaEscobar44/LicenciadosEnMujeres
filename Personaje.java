@@ -33,21 +33,34 @@ public class Personaje {
 
     public boolean estaVivo() { return vida > 0; }
 
+    /** 
+     * @param cantidad
+     */
     public void recibirDano(int cantidad) {
         vida -= cantidad;
         if (vida < 0) vida = 0;
     }
 
+    /** 
+     * @param cantidad
+     */
     public void curarVida(int cantidad) {
         vida += cantidad;
         if (vida > vidaMaxima) vida = vidaMaxima;
     }
 
+    /** 
+     * @param cantidad
+     */
     public void curarMana(int cantidad) {
         mana += cantidad;
         if (mana > manaMaximo) mana = manaMaximo;
     }
 
+    /** 
+     * @param cantidad
+     * @return boolean
+     */
     public boolean gastarMana(int cantidad) {
         if (mana >= cantidad) {
             mana -= cantidad;
@@ -56,6 +69,9 @@ public class Personaje {
         return false; 
     }
 
+    /** 
+     * @return boolean
+     */
     public boolean usarBifruta() {
         if (bifrutas > 0) {
             bifrutas--;
@@ -64,6 +80,9 @@ public class Personaje {
         return false;
     }
 
+    /** 
+     * @return boolean
+     */
     public boolean usarCafe() {
         if (cafeles > 0) {
             cafeles--;

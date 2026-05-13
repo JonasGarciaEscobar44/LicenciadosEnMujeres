@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class Main {
+    /** 
+     * @param args
+     */
     // Aquí arranca la movida, la función principal del programa
     public static void main(String[] args) {
         // Preparamos el Scanner para leer lo que escribas por teclado
@@ -49,6 +52,10 @@ public class Main {
         System.out.println();
     }
 
+    /** 
+     * @param piso
+     * @return Personaje
+     */
     // Esta función te saca un enemigo al azar dependiendo del piso
     public static Personaje obtenerEnemigoFijo(int piso) {
         // Genera un número aleatorio entre 0 y 9
@@ -70,6 +77,10 @@ public class Main {
         }
     }
     
+    /** 
+     * @param sc
+     * @param modoDios
+     */
     // Aquí está el motor del juego, donde te pegas de tortas
     public static void empezarPelea(Scanner sc, boolean modoDios) {
         // Creamos la lista de personajes jugables con sus stats y ataques
