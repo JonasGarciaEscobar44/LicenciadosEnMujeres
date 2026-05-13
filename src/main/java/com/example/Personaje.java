@@ -1,3 +1,5 @@
+package com.example;
+
 /**
  * Clase principal para los combatientes (Héroes y Enemigos).
  * Gestiona estadísticas como vida, maná y estados alterados.

@@ -1,3 +1,4 @@
+package com.example;
 /**
  * Clase que representa un ataque dentro del juego.
  * Contiene el daño, coste de maná y efectos secundarios.
