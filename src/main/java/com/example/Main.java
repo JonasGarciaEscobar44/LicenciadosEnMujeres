@@ -6,7 +6,7 @@ public class Main {
 
     /**
      * FUNCIÓN PRINCIPAL (main)
-     * Aquí arranca la movida. Prepara el escáner, pinta el logo y te da a elegir
+     * Aquí arranca. Prepara el escáner, pinta el logo y te da a elegir
      * si juegas o te vas a casa.
      */
     public static void main(String[] args) {
@@ -44,7 +44,6 @@ public class Main {
     /**
      * FUNCIÓN IMPRIMIR LOGO
      * Función que simplemente escupe texto por pantalla para hacer el logo.
-     * Puro arte ASCII.
      */
     public static void imprimirLogo() {
         System.out.println("   _________________________________________________");
@@ -111,7 +110,7 @@ public class Main {
                                 new Ataque("Curl de biceps en tu cara", 24 + (piso * 3), 20, "Ninguno") },
                         0, 0);
             case 8:
-                return new Personaje("El gamer otaku gordito (Piso " + piso + ")", 75 + (piso * 15), 90 + (piso * 10),
+                return new Personaje("El gamer otaku gordito pestilente (Piso " + piso + ")", 75 + (piso * 15), 90 + (piso * 10),
                         new Ataque[] { new Ataque("Insultos por micro", 12 + (piso * 2), 15, "Veneno"),
                                 new Ataque("Rage quit", 28 + (piso * 3), 30, "Aturdir") },
                         0, 0);
