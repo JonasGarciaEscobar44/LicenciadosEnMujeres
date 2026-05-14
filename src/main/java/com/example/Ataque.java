@@ -1,18 +1,18 @@
 package com.example;
+
 /**
- * Clase que representa un ataque dentro del juego.
- * Contiene el daño, coste de maná y efectos secundarios.
+ * Clase que representa los palos que pegas (o que te pegan) en el juego.
+ * Guarda el nombre, el daño, lo que cuesta tirarlo y si envenena o aturde.
  */
 public class Ataque {
-    /**
-     * Incrementa el daño base del ataque en un 15%.
-     * Se utiliza como recompensa al subir de piso.
-     */
+    
+    // Atributos básicos del ataque
     private String nombre;
     private int dano;
     private int costeMana;
     private String efecto; 
 
+    // Constructor: lo usamos para darle valores al ataque cuando lo creamos
     public Ataque(String nombre, int dano, int costeMana, String efecto) {
         this.nombre = nombre;
         this.dano = dano;
@@ -20,12 +20,16 @@ public class Ataque {
         this.efecto = efecto;
     }
 
-    // --- NUEVO: FUNCION PARA CHETAR EL DAÑO ---
+    /**
+     * Incrementa el daño base del ataque en un 15%.
+     * Se utiliza como recompensa al subir de piso para que pegues más fuerte.
+     */
     public void mejorarDano() {
-        // Le suma un 15% al daño base que tenga en ese momento
+        // Multiplica el daño por 1.15 y lo castea a int (sin decimales)
         this.dano = (int)(this.dano * 1.15);
     }
 
+    // Getters: funciones que usa el Main para saber cuánto quitas o si envenenas
     public String getNombre() { return nombre; }
     public int getDano() { return dano; }
     public int getCosteMana() { return costeMana; }
